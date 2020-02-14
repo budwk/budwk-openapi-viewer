@@ -65,7 +65,6 @@
     <div ref="appHeader" class="sw-app-header-container">
       <div class="sw-row">
         <div style="display:flex; align-items: center;">
-          <mrin-logo style="height:36px;width:36px;margin-left:5px"></mrin-logo>
           <div class="sw-prod-title">BudWk API Viewer</div>
         </div>
         <div style="margin: 0px 8px;">
@@ -489,7 +488,7 @@ export default {
   }
   .sw-page-container {
     margin-top: 70px;
-    padding: 8px 32px 16px 32px;
+    padding: 8px 32px 36px 32px;
     overflow: auto;
     overflow-x: scroll;
     display: flex;
