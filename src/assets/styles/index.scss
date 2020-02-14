@@ -1,0 +1,108 @@
+@import "~@/assets/styles/_vars.scss";
+@import "~@/assets/styles/_typography.scss";
+@import "~@/assets/styles/_element_vars.scss"; /*  This contains all customizations and then loading of elements theme css */
+@import "~@/assets/styles/_sw_form.scss";
+@import "~@/assets/styles/_table.scss";
+@import "~@/assets/styles/_slideout.scss";
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700");
+
+
+body, html{
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  font-family: $sw-font-family, 'Nunito', sans-serif;
+  font-weight:400;
+  font-size: 14px;
+  color:#333;
+  letter-spacing:normal;
+  &::-webkit-scrollbar {width: 8px; height:8px}
+  &::-webkit-scrollbar-track {background-color: transparent;}
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.4);
+    border-radius:3px;
+  }
+}
+
+input, select, button {
+  font-family: $sw-font-family, 'Nunito', sans-serif;
+  font-weight:400;
+}
+
+a{
+  color: darken($sw-info,5%);
+}
+
+.sw-row {
+  display:flex;
+  align-items:center;
+  flex-direction: row;
+}
+.sw-col {
+  display:flex;
+  align-items:stretch;
+  flex-direction: column;
+}
+
+.sw-section-title {
+  font-size:20px;
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.sw-section-heading1 {
+  font-size: 16px;
+  font-weight:bold;
+  margin: 20px 0 4px 0;
+}
+
+.sw-section-heading2 {
+  font-size: 14px;
+  font-weight:bold;
+  margin: 16px 0 4px 0;
+}
+
+.sw-section-heading3 {
+  font-size: 12px;
+  font-weight:bold;
+  margin: 12px 0 4px 0;
+}
+
+.sw-gray-text{
+  vertical-align: middle;
+  color: #999;
+}
+
+.sw-gray-small-text{
+  font-size: 12px;
+  line-height: 12px;
+  vertical-align: middle;
+  color: #999;
+}
+
+.sw-blue-small-text{
+  font-size: 12px;
+  line-height: 12px;
+  vertical-align: middle;
+  color: $sw-blue-text;;
+}
+.sw-blue-bold-small-text{
+  font-size: 12px;
+  font-weight:bold;
+  line-height: 12px;
+  vertical-align: middle;
+  color: $sw-blue-text;;
+}
+
+
+.sw-border{
+  border:1px solid $sw-border-color;
+  border-radius: $sw-border-radius;
+}
+.sw-light-border{
+  border:1px solid $sw-light-border-color;
+  border-radius: $sw-border-radius;
+}

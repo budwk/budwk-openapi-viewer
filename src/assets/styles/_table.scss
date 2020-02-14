@@ -1,0 +1,50 @@
+@import "~@/assets/styles/_vars.scss";
+table {
+  border-spacing: 0;
+}
+td, th {
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+.sw-table {
+  border-collapse: separate;
+  border: 1px solid #ccc;
+  border-radius: $sw-border-radius;
+  background-color: #fff;
+  color: #565656;
+  margin: 0;
+  max-width: 100%;
+  tbody tr:first-child td,  // first row tds
+  th {
+    border-top: 0 none;
+  }
+  td, th {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 5px 4px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    color: #565656;
+    font-size: 12px;
+    line-height:30px;
+    font-weight: 600;
+    letter-spacing: normal;
+    background-color: #fafafa;
+    vertical-align: bottom;
+    border-bottom: 1px solid #ccc;
+  }
+
+  > tbody >tr > td,
+  > tr > td{
+    border-top: 1px solid #eee;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  tr:hover{
+    background-color: darken(#fff,3%);
+  }
+
+}
