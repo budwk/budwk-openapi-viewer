@@ -2,21 +2,21 @@
 # Swagger OpenApi V3 Viewer for BudWK V6
 An OpenAPI 3.0 and 2.0 Spec viewer with built in console 
 
-# ËµÃ÷
+# è¯´æ˜
 
-* ±¾ÏîÄ¿ÔÚ OpenAPI-Viewer µÄ»ù´¡ÉÏ, ĞŞ¸´Ò»Ğ© OpenAPI V3 ¼æÈİĞÔbug ÎªÁË¸üºÃµÄÓ¦ÓÃÓÚ BudWk ÏîÄ¿ÉÏ
-* Ô­Ê¼´úÂë: [https://github.com/mrin9/OpenAPI-Viewer](https://github.com/mrin9/OpenAPI-Viewer)
-* ÑİÊ¾µØÖ·: [https://budwk.com/swagger](https://budwk.com/swagger)
+* æœ¬é¡¹ç›®åœ¨ OpenAPI-Viewer çš„åŸºç¡€ä¸Š, ä¿®å¤ä¸€äº› OpenAPI V3 å…¼å®¹æ€§bug ä¸ºäº†æ›´å¥½çš„åº”ç”¨äº BudWk é¡¹ç›®ä¸Š
+* åŸå§‹ä»£ç : [https://github.com/mrin9/OpenAPI-Viewer](https://github.com/mrin9/OpenAPI-Viewer)
+* æ¼”ç¤ºåœ°å€: [https://budwk.com/swagger](https://budwk.com/swagger)
 
-## °²×°
+## å®‰è£…
 ```
 yarn install
 ```
-## µ÷ÊÔ
+## è°ƒè¯•
 ```
 yarn serve
 ```
-## Éú³É
+## ç”Ÿæˆ
 ```
 yarn run build 
 ```
