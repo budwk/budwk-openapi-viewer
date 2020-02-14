@@ -55,7 +55,6 @@ function callEndPoint(method, url, pathParams, queryParams, reqBodyMimeType, req
     }
     else {
         hParams['Content-Type'] = reqBodyMimeType; //TODO: check if its a valid mime type
-        console.log(reqBodyMimeType)
         if (requestBody[reqBodyMimeType].examples[0]) {
             if (reqBodyMimeType.toLowerCase().includes("json")) {
                 try {
@@ -77,7 +76,6 @@ function callEndPoint(method, url, pathParams, queryParams, reqBodyMimeType, req
             reqBodyContent = qs.stringify(reqBodyContent);
         }
     }
-    console.log(reqBodyContent)
 
     //TODO: Deal with formParams and cookieParams later
     endPoint = store.state.selectedApiServer.replace(/^\/|\/$/g, '') + "/" + endPoint.replace(/^\/|\/$/g, '');
