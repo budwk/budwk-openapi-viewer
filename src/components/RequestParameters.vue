@@ -172,6 +172,12 @@
             ></json-tree>
             <textarea
               :id="'resp_text_' + operationId"
+              v-if="showJsonViewer"
+              v-model="jsonRespText"
+              style="height:1px;width:1px;overflow-y:hidden;"
+            />
+            <textarea
+              :id="'resp_text_' + operationId"
               :class="'sw-response-data sw-mono-font ' + responseStatusCssClass"
               v-if="showTextViewer"
               v-model="jsonRespText"
@@ -282,6 +288,7 @@ export default {
             me.showJsonViewer = true;
             me.showTextViewer = false;
             me.jsonResponse.data = resp.data;
+            me.jsonRespText = JSON.stringify(resp.data, null, 2);
           } else {
             me.showJsonViewer = false;
             me.showTextViewer = true;
