@@ -170,6 +170,7 @@
               :data="jsonResponse.data"
               class="sw-live-response sw-light-border"
             ></json-tree>
+
             <textarea
               :id="'resp_text_' + operationId"
               v-if="showJsonViewer"
