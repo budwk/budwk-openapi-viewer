@@ -317,6 +317,7 @@ export default {
           }
         ];
       }
+      // 删除转换后多余的 /swagger.json/ 字符串
       let selectApiServerUrl = me.parsedSpec.servers[0].url;
       selectApiServerUrl = selectApiServerUrl.replace("/swagger.json/", "");
       me.isSpecLoaded = true;

@@ -8,6 +8,18 @@
       <div style="margin-left:5px">REQUEST</div>
     </div>
 
+    <!-- Security -->
+    <div v-if="security.length > 0" class="sw-section-gap">
+      <div class="sw-section-heading3 sw-gray-text">SECURITYS</div>
+      <table style="width: 100%" class="sw-table">
+        <tr v-for="(val, index) in security">
+          <td style="min-width:100px">
+            <span v-for="(v, n) in val"> {{ n }} </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
     <!-- Path Params -->
     <div v-if="pathParams.length > 0" class="sw-section-gap">
       <div class="sw-section-heading3 sw-gray-text">PATH PARAMETERS</div>
@@ -201,6 +213,12 @@ export default {
     },
     requestBody: {
       type: Object
+    },
+    security: {
+      type: [Array, String],
+      default: function() {
+        return [];
+      }
     }
   },
 
@@ -341,7 +359,6 @@ export default {
         );
       }
     });
-
     if (
       me.requestBody !== undefined &&
       Object.keys(me.requestBody.content).length > 0

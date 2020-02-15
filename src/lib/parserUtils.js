@@ -109,7 +109,6 @@ export default function ProcessSpec(specUrl) {
                         else {
                             finalParameters = fullPath.parameters ? fullPath.parameters.slice(0) : [];
                         }
-
                         //Update Responses
                         tagObj.paths.push({
                             "show": true,
