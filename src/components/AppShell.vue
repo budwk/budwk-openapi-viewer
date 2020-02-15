@@ -282,7 +282,12 @@ export default {
 
         for (let i = 0; i < v.paths.length; i++) {
           if (
-            v.paths[i].path.toLowerCase().includes(me.searchVal.toLowerCase())
+            v.paths[i].path
+              .toLowerCase()
+              .includes(me.searchVal.toLowerCase()) ||
+            v.paths[i].summary
+              .toLowerCase()
+              .includes(me.searchVal.toLowerCase())
           ) {
             v.paths[i].show = true;
             cnt++;
