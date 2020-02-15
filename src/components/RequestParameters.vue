@@ -149,7 +149,11 @@
         >
           CLEAR
         </button>
-        <button class="sw-btn sw-plain" v-if="showTextViewer || showJsonViewer">
+        <button
+          class="sw-btn sw-plain"
+          v-if="showTextViewer || showJsonViewer"
+          @click="onCopyResponseData"
+        >
           COPY
         </button>
       </div>
@@ -167,6 +171,7 @@
               class="sw-live-response sw-light-border"
             ></json-tree>
             <textarea
+              :id="'resp_text_' + operationId"
               :class="'sw-response-data sw-mono-font ' + responseStatusCssClass"
               v-if="showTextViewer"
               v-model="jsonRespText"
@@ -195,7 +200,8 @@ import {
   schemaToModel,
   schemaToObj,
   generateExample,
-  removeCircularReferences
+  removeCircularReferences,
+  copyToClipboard
 } from "@/lib/utils";
 import ParameterInputs from "@/components/ParameterInputs";
 
@@ -219,7 +225,8 @@ export default {
       default: function() {
         return [];
       }
-    }
+    },
+    operationId: { type: String }
   },
 
   data: function() {
@@ -322,6 +329,10 @@ export default {
         });
       this.showJsonViewer = false;
       this.showTextViewer = false;
+    },
+
+    onCopyResponseData() {
+      copyToClipboard("resp_text_" + this.operationId);
     }
   },
 

@@ -404,4 +404,4 @@ function removeCircularReferences(level = 0) {
 };
 
 
-export { debounce, schemaToModel, schemaToObj, schemaToElTree, generateExample, getTypeInfo, getBaseUrlFromUrl, removeCircularReferences }
+export { debounce, schemaToModel, schemaToObj, schemaToElTree, generateExample, getTypeInfo, getBaseUrlFromUrl, removeCircularReferences, copyToClipboard }

@@ -63,6 +63,7 @@
             :parameters="fullPath.parameters"
             :requestBody="fullPath.requestBody"
             :security="fullPath.security"
+            :operationId="fullPath.operationId"
           >
           </request-parameters>
 
