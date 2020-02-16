@@ -43,7 +43,11 @@
 
     <!-- Body Param -->
     <div
-      v-if="requestBody !== undefined && Object.keys(requestBody).length > 0"
+      v-if="
+        requestBody !== undefined &&
+          Object.keys(requestBody).length > 0 &&
+          checkRequestBody()
+      "
       class="sw-section-gap"
     >
       <div class="sw-section-heading3 sw-gray-text">BODY PARAMETERS</div>
@@ -341,6 +345,18 @@ export default {
 
     onCopyResponseData() {
       copyToClipboard("resp_text_" + this.operationId);
+    },
+
+    checkRequestBody() {
+      // 如果没有定义requestBody 则不在页面显示
+      if (
+        Object.keys(this.requestBody).length == 1 &&
+        Object.keys(this.requestBody.content).length == 1 &&
+        this.requestBody.content.hasOwnProperty("*/*")
+      ) {
+        return false;
+      }
+      return true;
     }
   },
 
@@ -369,7 +385,7 @@ export default {
           required: v.required ? v.required : false,
           description: v.description ? v.description : "",
           schema: v.schema ? v.schema : { type: "string" },
-          example: v["x-example"] ? v["x-example"] : ""
+          example: v["example"] ? v["example"] : ""
         });
       } else {
         console.error(
