@@ -169,14 +169,16 @@
         v-show="tag.show"
         :key="tag.name"
       >
-        <div class="sw-tag-title">{{ tag.name }}</div>
+        <div class="sw-tag-title" style="cursor: pointer;" @click="clickTag(tag.name)">{{ tag.name }}</div>
         <span
           v-if="tag.description"
           class="sw-markdown-block"
           v-html="$marked(tag.description)"
         >
         </span>
-        <end-point :paths="tag.paths" :parameters="tag.parameters"></end-point>
+        <el-button style="float:right;margin-top:-24px;cursor: pointer;" v-if="openTag===tag.name" type="text" @click="closeTags">收缩</el-button>
+        <el-button style="float:right;margin-top:-24px;cursor: pointer;" v-else type="text" @click="openTags(tag.name)">展开</el-button>
+        <end-point v-if="openTag===tag.name" :paths="tag.paths" :parameters="tag.parameters"></end-point>
       </div>
     </div>
   </div>
@@ -209,10 +211,24 @@ export default {
       showSettingsPanel: false,
       showLoadJsonPanel: false,
       jsonSpecText: "",
-      prevScrollpos: 0
+      prevScrollpos: 0,
+      openTag: ""
     };
   },
   methods: {
+    clickTag(val) {
+      if ( this.openTag===val){
+        this.openTag = ''
+      }else{
+        this.openTag = val
+      }      
+    },
+    openTags(val) {
+      this.openTag = val
+    },
+    closeTags() {
+      this.openTag = ''
+    },
     loadJson() {
       let me = this;
       try {
@@ -275,6 +291,19 @@ export default {
       });
     },
 
+    checkKeywordInPath(val,key){
+      if(val.path.toLowerCase().includes(key)) {
+        return true
+      }
+      if(val.summary.toLowerCase().includes(key)) {
+        return true
+      }
+      if(val.tagText.toLowerCase().includes(key)) {
+        return true
+      }
+      return false;
+    },
+
     onSearchKeyUp: debounce(function(e) {
       var me = this;
       this.parsedSpec.tags.map(function(v) {
@@ -282,12 +311,7 @@ export default {
 
         for (let i = 0; i < v.paths.length; i++) {
           if (
-            v.paths[i].path
-              .toLowerCase()
-              .includes(me.searchVal.toLowerCase()) ||
-            v.paths[i].summary
-              .toLowerCase()
-              .includes(me.searchVal.toLowerCase())
+            me.checkKeywordInPath(v.paths[i],me.searchVal.toLowerCase())
           ) {
             v.paths[i].show = true;
             cnt++;

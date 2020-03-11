@@ -92,6 +92,9 @@ export default function ProcessSpec(specUrl) {
                             }
                         }
 
+                        // tags in path
+                        let pathTags = []
+
                         // Merge Common Parameters with This methods parameters
                         let finalParameters = [];
                         if (commonParams) {
@@ -114,6 +117,7 @@ export default function ProcessSpec(specUrl) {
                             "show": true,
                             "expanded": false,
                             "expandedAtLeastOnce": false,
+                            "tagText": tagText,
                             "summary": summary,
                             "method": methodName,
                             "description": fullPath.description,
