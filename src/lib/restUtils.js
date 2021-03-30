@@ -8,14 +8,13 @@ function callEndPoint(method, url, pathParams, queryParams, reqBodyMimeType, req
     let updatedQParams;
     let hParams = {};
 
-
-
     // Path Params
     if (pathParams) {
         pathParams.map(function (v) {
             endPoint = endPoint.replace("{" + v.name + "}", v.example);
         });
     }
+
     // Query Params
     if (queryParams) {
         queryParams.map(function (v) {

@@ -23,15 +23,16 @@
 
         <!-- If scheme is apiKey -->
         <td v-if="scheme.type === 'apiKey'">
-          If Activated, all requests will send
-          <code>'{{ scheme.name }}'</code> in
-          <code>'{{ scheme.in }}'</code> with the given value
+          如果设置,则所有请求都会在
+          <code>'{{ scheme.in }}'</code> 传递此
+          <code>'{{ scheme.name }}'</code> 参数值
+          
           <div style="margin:5px 0 10px 0">
             <input
               type="text"
               class="sw-small"
               style="width:205px; margin-right:5px"
-              placeholder="api-token"
+              :placeholder="scheme.name"
               v-model="apiToken"
             />
             <button
@@ -201,7 +202,8 @@ export default {
       if (scheme.type.toLowerCase() === "apikey" && scheme.in === "header") {
         if (this.$data.apiToken) {
           store.commit("reqTokenType", scheme.type.toLowerCase());
-          store.commit("reqSendTokenIn", scheme.name);
+          store.commit("reqSendTokenIn", scheme.in);
+          store.commit("reqHeader", scheme.name);
           store.commit("reqToken", this.$data.apiToken);
           this.authStatusData = "(API Key Active)";
         }
