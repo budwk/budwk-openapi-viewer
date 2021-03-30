@@ -63,7 +63,7 @@
           type="text"
           class="sw-medium"
           style="width:100%"
-          v-model="param.example"
+          v-model="param.schema.example"
         />
       </td>
 

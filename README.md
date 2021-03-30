@@ -1,6 +1,6 @@
 
-# Swagger OpenApi V3 Viewer for BudWK V6
-An OpenAPI 3.0 and 2.0 Spec viewer with built in console 
+# Swagger OpenApi V3 Viewer
+An OpenAPI 3.0 and 2.0 Spec viewer
 
 # 说明
 

@@ -5,7 +5,7 @@
       style="display: flex; align-items: center;"
     >
       <i class="el-icon-upload2" style="font-sixe:16px;"></i>
-      <div style="margin-left:5px">REQUEST</div>
+      <div style="margin-left:5px">请求</div>
     </div>
 
     <!-- Security -->
@@ -14,10 +14,28 @@
       <table style="width: 100%" class="sw-table">
         <tr v-for="(val, index) in security">
           <td style="min-width:100px">
-            <span v-for="(v, n) in val"> {{ n }} </span>
+            <span> {{ val }} </span>
           </td>
         </tr>
       </table>
+    </div>
+
+    <!-- Header Params -->
+    <div v-if="headerParams.length > 0" class="sw-section-gap">
+      <div class="sw-section-heading3 sw-gray-text">HEADER PARAMETERS</div>
+      <parameter-inputs
+        :parameters="headerParams"
+        :showItputs="true"
+      ></parameter-inputs>
+    </div>
+
+    <!-- Cookie Params -->
+    <div v-if="cookieParams.length > 0" class="sw-section-gap">
+      <div class="sw-section-heading3 sw-gray-text">COOKIE PARAMETERS</div>
+      <parameter-inputs
+        :parameters="cookieParams"
+        :showItputs="true"
+      ></parameter-inputs>
     </div>
 
     <!-- Path Params -->
@@ -112,24 +130,6 @@
       </el-tabs>
     </div>
 
-    <!-- Header Params -->
-    <div v-if="headerParams.length > 0" class="sw-section-gap">
-      <div class="sw-section-heading3 sw-gray-text">HEADER PARAMETERS</div>
-      <parameter-inputs
-        :parameters="headerParams"
-        :showItputs="true"
-      ></parameter-inputs>
-    </div>
-
-    <!-- Cookie Params -->
-    <div v-if="cookieParams.length > 0" class="sw-section-gap">
-      <div class="sw-section-heading3 sw-gray-text">COOKIE PARAMETERS</div>
-      <parameter-inputs
-        :parameters="cookieParams"
-        :showItputs="true"
-      ></parameter-inputs>
-    </div>
-
     <!-- TRY out Button -->
     <div
       v-show="$store.state.isDevMode"
@@ -137,7 +137,7 @@
       class="sw-make-request"
     >
       <div class="sw-row" style="margin: 2px 0;">
-        <button class="sw-btn sw-primary" @click="onTry">TRY</button>
+        <button class="sw-btn sw-primary" @click="onTry">测试</button>
         <div
           :class="'sw-response-status ' + responseStatusCssClass"
           v-if="responseStatusCode"
@@ -151,14 +151,14 @@
           style="margin-right:5px;"
           @click="onClearResponseData"
         >
-          CLEAR
+          清空
         </button>
         <button
           class="sw-btn sw-plain"
           v-if="showTextViewer || showJsonViewer"
           @click="onCopyResponseData"
         >
-          COPY
+          复制
         </button>
       </div>
       <div class="sw-response-details" v-if="showTextViewer || showJsonViewer">

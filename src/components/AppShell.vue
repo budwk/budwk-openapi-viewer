@@ -57,7 +57,7 @@
           style="margin-top:5px; width:70px;align-self: flex-end;"
           @click="loadJson()"
         >
-          LOAD
+          开始解析
         </button>
       </div>
     </vue-sideout-panel>
@@ -65,9 +65,9 @@
     <div ref="appHeader" class="sw-app-header-container">
       <div class="sw-row">
         <div style="display:flex; align-items: center;">
-          <div class="sw-prod-title">BudWk API Viewer</div>
+          <div class="sw-prod-title">OpenAPI V3 Viewer</div>
         </div>
-        <div style="margin: 0px 8px;">
+        <div style="margin: 0px 8px;display:none;">
           <input
             ref="specUrl"
             type="text"
@@ -84,8 +84,8 @@
             OPEN
           </button>
         </div>
-        <button class="sw-btn sw-primary" @click="showLoadJsonPanel = true">
-          JSON
+        <button class="sw-btn sw-primary" style="margin: 0px 8px;" @click="showLoadJsonPanel = true">
+          解析JSON
         </button>
 
         <div style="flex:1"></div>
@@ -176,8 +176,8 @@
           v-html="$marked(tag.description)"
         >
         </span>
-        <el-button style="float:right;margin-top:-24px;cursor: pointer;" v-if="openTag===tag.name" type="text" @click="closeTags">收缩</el-button>
-        <el-button style="float:right;margin-top:-24px;cursor: pointer;" v-else type="text" @click="openTags(tag.name)">展开</el-button>
+        <button  class="sw-btn sw-primary" style="float:right;margin-top:-24px;cursor: pointer;" v-if="openTag===tag.name" type="text" @click="closeTags">收缩</button>
+        <button  class="sw-btn sw-primary" style="float:right;margin-top:-24px;cursor: pointer;" v-else type="text" @click="openTags(tag.name)">展开</button>
         <end-point v-if="openTag===tag.name" :paths="tag.paths" :parameters="tag.parameters"></end-point>
       </div>
     </div>
@@ -346,9 +346,9 @@ export default {
           }
         ];
       }
-      // 删除转换后多余的 /swagger.json/ 字符串
+      // 删除转换后多余的 /openapi.json/ 字符串
       let selectApiServerUrl = me.parsedSpec.servers[0].url;
-      selectApiServerUrl = selectApiServerUrl.replace("/swagger.json/", "");
+      selectApiServerUrl = selectApiServerUrl.replace("/openapi.json/", "");
       me.isSpecLoaded = true;
       me.isDevMode = true;
       me.selectedApiServer = selectApiServerUrl;
@@ -408,7 +408,7 @@ export default {
 
   beforeRouteUpdate(to, from, next) {
     if (to.path.startsWith("/load") && to.params.specUrl) {
-      this.authStatus = "(Not Authenticated)";
+      this.authStatus = "";
       this.specUrl = to.params.specUrl;
       this.loadSpec(false);
     }
@@ -431,11 +431,11 @@ export default {
       this.$route.fullPath.startsWith("/load") &&
       this.$route.params.specUrl
     ) {
-      this.authStatus = "(Not Authenticated)";
+      this.authStatus = "";
       this.specUrl = this.$route.params.specUrl;
       this.loadSpec(false);
     } else {
-      this.authStatus = "(Not Authenticated)";
+      this.authStatus = "";
     }
   },
 

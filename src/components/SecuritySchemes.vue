@@ -163,7 +163,7 @@
           </span>
         </td>
         <td v-else>
-          {{ scheme.type }}
+          {{ scheme.name }}
         </td>
       </tr>
     </table>
@@ -178,7 +178,7 @@ import { getBaseUrlFromUrl } from "@/lib/utils";
 export default {
   props: {
     schemes: { type: Object },
-    authStatusText: { type: String, default: "(Not Authenticated)" }
+    authStatusText: { type: String, default: "" }
   },
 
   data: function() {
@@ -218,6 +218,8 @@ export default {
           store.commit("reqToken", tmpToken);
           this.authStatusData = "(HTTP Basic Active)";
         }
+      } else if (scheme.type === "http") {
+        this.authStatusData = "(HTTP Parameters)";
       }
     },
 

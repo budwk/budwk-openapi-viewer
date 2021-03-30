@@ -4,11 +4,12 @@
   "private": true,
   "author": "Mrinmoy",
   "license": "MIT",
-  "description": "Open API viewer and console",
-  "repository": "https://github.com/mrin9/OpenAPI-Viewer",
-  "homepage": "https://github.com/mrin9/OpenAPI-Viewer#readme",
+  "description": "OpenAPI viewer and console",
+  "repository": "https://gitee.com/budwk/budwk-openapi-viewer",
+  "homepage": "https://gitee.com/budwk/budwk-openapi-viewer",
   "scripts": {
     "serve": "vue-cli-service serve --port 9522",
+    "dev": "vue-cli-service serve --port 9522",
     "build": "vue-cli-service build",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },

@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%">
+  <div style="width:100%;padding-top:10px;">
     <div
       v-for="(fullPath, index) in paths"
       v-if="fullPath.show"

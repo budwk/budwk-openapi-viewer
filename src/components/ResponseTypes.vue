@@ -5,7 +5,7 @@
       style="display: flex; align-items: center;"
     >
       <i class="el-icon-download" style="font-sixe:16px;"></i>
-      <div style="margin-left:5px">RESPONSE</div>
+      <div style="margin-left:5px">响应</div>
     </div>
 
     <!-- For Each Status Responses -->
