@@ -2,6 +2,7 @@ import $RefParser from 'json-schema-ref-parser';
 import converter from 'swagger2openapi';
 
 export default function ProcessSpec(specUrl) {
+    console.log(specUrl);
     let p;
     let options = { patch: true, warnOnly: true }
     if (typeof specUrl === "string") {
