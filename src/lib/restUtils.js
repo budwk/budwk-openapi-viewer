@@ -44,6 +44,7 @@ function callEndPoint(method, url, pathParams, queryParams, reqBodyMimeType, req
     }
     else if (store.state.reqTokenType === 'apikey' && store.state.reqSendTokenIn === 'header') {
         hParams[store.state.reqHeader] = store.state.reqToken;
+        hParams['version'] = store.state.reqVersion;
     }
 
     // Request Body

@@ -23,6 +23,7 @@ export default new Vuex.Store({
     isDevMode: false,
     selectedApiServer: "",
     reqHeader: "",
+    reqVersion: "",
     reqToken: "",
     reqTokenType: "",    // can be apikey, basic or bearer
     reqSendTokenIn: "",  // can be header, querystring or cookies
@@ -39,6 +40,7 @@ export default new Vuex.Store({
     reqToken(state, payload) { state.reqToken = payload; },
     reqTokenType(state, payload) { state.reqTokenType = payload; },
     reqHeader(state, payload) { state.reqHeader = payload; },
+    reqVersion(state, payload) { state.reqVersion = payload; },
     reqSendTokenIn(state, payload) { state.reqSendTokenIn = payload; },
     oAuthClientId(state, payload) { state.oAuthClientId = payload; },
     oAuthClientSecret(state, payload) { state.oAuthClientSecret = payload; },

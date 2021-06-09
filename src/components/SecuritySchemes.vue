@@ -3,7 +3,7 @@
     <div class="sw-security-title">
       AUTHENTICATION
       <span style="color:orangered; font-size:20px;">
-        {{ authStatusData }}</span
+        {{ versionStatusData }} {{ authStatusData }}</span
       >
     </div>
 
@@ -12,10 +12,40 @@
         <th>Type</th>
         <th>Authentication Procedure</th>
       </tr>
+      <tr>
+        <td class="sw-markdown-block" style="width:auto">
+          <div class="sw-security-sub-title">
+            
+          </div>
+          <span v-html="$marked('灰度版本号')">
+          </span>
+        </td>
+        <td>
+          如果设置,则所有请求都会在
+          <code>'header'</code> 传递此
+          <code>'version'</code> 参数值
+          
+          <div style="margin:5px 0 10px 0">
+            <input
+              type="text"
+              class="sw-small"
+              style="width:205px; margin-right:5px"
+              placeholder="版本号"
+              v-model="apiVersion"
+            />
+            <button
+              class="sw-btn sw-primary sw-small"
+              @click="onActivateVersion"
+            >
+              ACTIVATE
+            </button>
+          </div>
+        </td>
+      </tr>  
       <tr v-for="(scheme, key) in schemes" :key="key">
         <td class="sw-markdown-block" style="width:auto">
           <div class="sw-security-sub-title">
-            {{ scheme.type }} {{ scheme.scheme ? scheme.scheme : "" }}
+            
           </div>
           <span v-html="$marked(scheme.description ? scheme.description : '')">
           </span>
@@ -187,17 +217,25 @@ export default {
       username: "",
       password: "",
       apiToken: "",
+      apiVersion: "",
       bearerToken: "",
       customHeader: "",
       customToken: "",
       clientId: "",
       clientSecret: "",
       authStatusData: this.authStatusText,
+      versionStatusData: '',
       browserLocation: location
     };
   },
 
   methods: {
+    onActivateVersion() {
+      if (this.$data.apiVersion) {
+         store.commit("reqVersion", this.$data.apiVersion);
+         this.versionStatusData = "(API Version Active)";
+      }
+    },
     onActivateSecurityScheme(scheme) {
       if (scheme.type.toLowerCase() === "apikey" && scheme.in === "header") {
         if (this.$data.apiToken) {
